@@ -1,40 +1,40 @@
 {
-  "name": "skills-config",
-  "version": "0.0.0",
-  "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix",
-    "prepare": "simple-git-hooks"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.33.2",
-  "devDependencies": {
-    "@antfu/eslint-config": "^9.0.0",
-    "@lonewolfyx/tsconfig": "^0.0.6",
-    "@types/node": "^25.9.1",
-    "eslint": "^10.4.0",
-    "jiti": "^2.7.0",
-    "nano-staged": "^1.0.2",
-    "picocolors": "^1.1.1",
-    "simple-git-hooks": "^2.13.1",
-    "tsdown": "^0.22.0",
-    "tsx": "^4.22.3",
-    "typescript": "^6.0.3"
-  },
-  "type": "module",
-  "simple-git-hooks": {
-    "pre-commit": "npx nano-staged",
-    "commit-msg": "node scripts/verify-commit.js"
-  },
-  "nano-staged": {
-    "*": "eslint --fix"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  }
+    "name": "skills-config",
+    "type": "module",
+    "version": "0.0.0",
+    "packageManager": "pnpm@10.33.2",
+    "description": "",
+    "author": "",
+    "license": "ISC",
+    "keywords": [],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix",
+        "prepare": "simple-git-hooks"
+    },
+    "devDependencies": {
+        "@antfu/eslint-config": "^9.0.0",
+        "@lonewolfyx/tsconfig": "^0.0.6",
+        "@types/node": "^25.9.1",
+        "eslint": "^10.4.0",
+        "jiti": "^2.7.0",
+        "nano-staged": "^1.0.2",
+        "picocolors": "^1.1.1",
+        "simple-git-hooks": "^2.13.1",
+        "tsdown": "^0.22.0",
+        "tsx": "^4.22.3",
+        "typescript": "^6.0.3"
+    },
+    "simple-git-hooks": {
+        "pre-commit": "npx nano-staged",
+        "commit-msg": "node scripts/verify-commit.js"
+    },
+    "nano-staged": {
+        "*": "eslint --fix"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    }
 }
