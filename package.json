@@ -17,7 +17,7 @@
     "scripts": {
         "build": "tsdown",
         "dev": "tsdown --watch",
-        "lint": "eslint .",
+        "lint": "eslint",
         "lint:fix": "eslint --fix",
         "prepublishOnly": "pnpm build",
         "prepare": "git submodule update --init --recursive && simple-git-hooks && pnpm start"
@@ -34,7 +34,7 @@
         "@lonewolfyx/tsconfig": "^0.0.6",
         "@types/node": "^25.9.1",
         "eslint": "^10.4.0",
-        "nano-staged": "^1.0.2",
+        "lint-staged": "^17.0.5",
         "picocolors": "^1.1.1",
         "simple-git-hooks": "^2.13.1",
         "tsdown": "^0.22.0",
@@ -42,10 +42,10 @@
         "typescript": "^6.0.3"
     },
     "simple-git-hooks": {
-        "pre-commit": "npx nano-staged",
+        "pre-commit": "npx lint-staged",
         "commit-msg": "node scripts/verify-commit.js"
     },
-    "nano-staged": {
+    "lint-staged": {
         "*": "eslint --fix"
     },
     "publishConfig": {
