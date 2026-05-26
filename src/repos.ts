@@ -43,7 +43,6 @@ export async function resolveRepoSkills(config: OptionsConfig): Promise<Resolved
         const repoDir = resolve(cacheDir, entry.repo)
         const pattern = resolveSkillPattern(entry.skills)
 
-        console.log(pattern)
         const files = await glob(pattern, { cwd: repoDir, maxDepth: 10 })
 
         for (const file of files) {
