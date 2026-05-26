@@ -3,7 +3,7 @@
     "type": "module",
     "version": "0.0.0",
     "packageManager": "pnpm@10.33.2",
-    "description": "Manage AI agent skills from git repos",
+    "description": "Declarative Git skills manager for AI coding agents. Define skills in skills.config.ts and automatically provision them during npm install / prepare.",
     "author": "",
     "license": "MIT",
     "keywords": [],
