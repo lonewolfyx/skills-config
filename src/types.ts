@@ -1,3 +1,8 @@
+import type { AgentType } from '../vendor/skills/src/types'
+import type { CommandArgs } from '@/args.ts'
+
+export type { AgentConfig, AgentType, Skill } from '../vendor/skills/src/types'
+
 export interface SkillEntry {
     /** Template source supported by giget, e.g. 'gh:user/repo' or URL */
     repo: string
@@ -5,24 +10,11 @@ export interface SkillEntry {
     skills?: string[]
 }
 
-export interface SkillsConfig {
+export type SkillsConfig = {
     skills: SkillEntry[]
-    /** Manually specify platforms and their skills directories. Auto-detected if omitted */
-    platforms?: Record<string, string>
-}
-
-export interface Platform {
-    id: string
-    name: string
-    /** Check whether the platform is installed */
-    detect: () => boolean
-    /** Default absolute path to the skills directory (~ expanded) */
-    defaultSkillsDir: string
-}
-
-export interface ResolvedSkill {
-    /** Skill name (directory name), e.g. 'vue', 'antfu' */
-    name: string
-    /** Absolute path to the skill directory */
-    dir: string
-}
+    /**
+     * Target agents to install to (defaults to all detected agents)
+     * @default all detected agents
+     */
+    agents?: AgentType | AgentType[]
+} & CommandArgs
