@@ -1,7 +1,7 @@
 import { createMain, defineCommand } from 'citty'
 import { commonArgs } from '@/args.ts'
 import { loadConfig } from '@/config.ts'
-import { resolveRepoSkills } from '@/repos.ts'
+import { downloadRepoSkills, resolveRepoSkills } from '@/repos.ts'
 import { createSymlinkSkills } from '@/symlink.ts'
 
 const main = defineCommand({
@@ -17,7 +17,7 @@ const main = defineCommand({
         //     await sync(args)
         // }
         const config = await loadConfig(args)
-        // await downloadRepoSkills(config)
+        await downloadRepoSkills(config)
 
         config.skill = await resolveRepoSkills(config)
         console.log(config)
