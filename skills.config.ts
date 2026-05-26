@@ -5,5 +5,9 @@ export default defineConfig({
         {
             repo: 'gh:vercel-labs/skills',
         },
+        {
+            repo: 'gh:antfu/skills',
+            skills: ['vue'],
+        },
     ],
 })
