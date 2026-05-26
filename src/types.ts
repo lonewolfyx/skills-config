@@ -19,7 +19,7 @@ export interface UserConfig {
     agents?: AgentType | AgentType[]
 }
 
-export type OptionsConfig = UserConfig & CommandArgs & {
+export type OptionsConfig = Required<UserConfig> & CommandArgs & {
     skill: ResolvedSkill[]
 }
 
