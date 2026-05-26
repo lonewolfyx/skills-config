@@ -16,7 +16,6 @@ const main = defineCommand({
         //     await sync(args)
         // }
         const config = await loadConfig(args)
-        console.log(JSON.stringify(config, null, 2))
         // await downloadRepoSkills(config)
 
         config.skill = await resolveRepoSkills(config)
