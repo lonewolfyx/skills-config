@@ -23,13 +23,35 @@ export async function downloadRepoSkills(config: OptionsConfig): Promise<void> {
     }
 }
 
+function resolveSkillPattern(skills?: string[]): string {
+    if (!skills?.length) {
+        return '**/SKILL.md'
+    }
+
+    if (skills.length === 1) {
+        return `**/${skills[0]}/SKILL.md`
+    }
+
+    return `**/{${skills.join(',')}}/SKILL.md`
+}
+
 export async function resolveRepoSkills(config: OptionsConfig): Promise<ResolvedSkill[]> {
     const cacheDir = resolve(config.cwd, SKILLS_CACHE_FILES)
-    const files = await glob('**/SKILL.md', { cwd: cacheDir, maxDepth: 10 })
+    const resolved: ResolvedSkill[] = []
 
-    return files.map((file) => {
-        const dir = resolve(cacheDir, file, '..')
-        const name = file.split('/').at(-2) ?? file
-        return { name, dir }
-    })
+    for (const entry of config.skills) {
+        const repoDir = resolve(cacheDir, entry.repo)
+        const pattern = resolveSkillPattern(entry.skills)
+
+        console.log(pattern)
+        const files = await glob(pattern, { cwd: repoDir, maxDepth: 10 })
+
+        for (const file of files) {
+            const dir = resolve(repoDir, file, '..')
+            const name = file.split('/').at(-2) ?? file
+            resolved.push({ name, dir })
+        }
+    }
+
+    return resolved
 }
