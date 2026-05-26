@@ -5,4 +5,7 @@ export default defineConfig({
     format: ['esm'],
     clean: true,
     outDir: 'dist',
+    deps: {
+        alwaysBundle: [/vendor\/skills/],
+    },
 })
