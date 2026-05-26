@@ -2,6 +2,7 @@ import { createMain, defineCommand } from 'citty'
 import { commonArgs } from '@/args.ts'
 import { loadConfig } from '@/config.ts'
 import { resolveRepoSkills } from '@/repos.ts'
+import { createSymlinkSkills } from '@/symlink.ts'
 
 const main = defineCommand({
     meta: {
@@ -20,6 +21,8 @@ const main = defineCommand({
 
         config.skill = await resolveRepoSkills(config)
         console.log(config)
+
+        await createSymlinkSkills(config)
     },
 })
 
