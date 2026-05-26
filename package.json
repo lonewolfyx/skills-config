@@ -20,7 +20,7 @@
         "lint": "eslint",
         "lint:fix": "eslint --fix",
         "prepublishOnly": "pnpm build",
-        "prepare": "git submodule update --init --recursive && simple-git-hooks && pnpm start"
+        "prepare": "git submodule update --init --recursive && simple-git-hooks"
     },
     "dependencies": {
         "citty": "^0.2.2",
