@@ -5,7 +5,7 @@
     "packageManager": "pnpm@10.33.2",
     "description": "Manage AI agent skills from git repos",
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "keywords": [],
     "bin": {
         "skills-config": "./bin/skills-config.mjs"
