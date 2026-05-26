@@ -18,9 +18,9 @@ Create a `skills.config.ts` file in your project root:
 import { defineConfig } from 'skills-config'
 
 export default defineConfig({
-  skills: [
-    { repo: 'gh:vercel-labs/skills' },
-  ],
+    skills: [
+        { repo: 'gh:vercel-labs/skills' },
+    ],
 })
 ```
 
