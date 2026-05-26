@@ -1,4 +1,4 @@
-import { defineConfig } from './src/index'
+import { defineConfig } from './dist/index.mjs'
 
 export default defineConfig({
     skills: [

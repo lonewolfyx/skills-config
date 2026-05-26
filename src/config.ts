@@ -2,6 +2,7 @@ import type { SkillsConfig, UserConfig } from './types'
 import type { CommandArgs } from '@/args.ts'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { getDetectedAgents } from '@/agents.ts'
 
 export function defineConfig(config: UserConfig): UserConfig {
     return config
@@ -25,6 +26,9 @@ export async function loadConfig(args: CommandArgs): Promise<SkillsConfig> {
 
     return {
         ...args,
-        ...config,
+        ...{
+            ...config,
+            agents: config.agents || await getDetectedAgents(),
+        },
     }
 }

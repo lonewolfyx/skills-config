@@ -13,6 +13,7 @@ const config = antfu({
         'node/prefer-global/process': 'off',
         'antfu/top-level-function': 'off',
         'regexp/no-unused-capturing-group': 'off',
+        'antfu/no-import-dist': 'off',
     },
     yaml: {
         overrides: {
