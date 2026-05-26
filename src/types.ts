@@ -18,3 +18,12 @@ export type SkillsConfig = {
      */
     agents?: AgentType | AgentType[]
 } & CommandArgs
+
+export interface UserConfig {
+    skills: SkillEntry[]
+}
+
+export interface ResolvedSkill {
+    name: string
+    dir: string
+}

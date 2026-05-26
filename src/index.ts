@@ -1,2 +1,2 @@
 export { defineConfig } from './config'
-export type { SkillsConfig } from './types'
+export type { UserConfig } from './types'

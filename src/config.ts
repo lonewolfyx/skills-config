@@ -1,9 +1,9 @@
-import type { SkillsConfig } from './types'
+import type { SkillsConfig, UserConfig } from './types'
 import type { CommandArgs } from '@/args.ts'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-export function defineConfig(config: SkillsConfig): SkillsConfig {
+export function defineConfig(config: UserConfig): UserConfig {
     return config
 }
 
@@ -15,7 +15,9 @@ export async function loadConfig(args: CommandArgs): Promise<SkillsConfig> {
     }
 
     const { createJiti } = await import('jiti')
-    const config = await createJiti(configPath, { interopDefault: true }).import('./skills.config.ts') as SkillsConfig
+    const config = await createJiti(configPath, { interopDefault: true })
+        .import('./skills.config.ts')
+        .then(m => (m as any).default)
 
     if (!config || !Array.isArray(config.skills)) {
         throw new Error('Invalid config: "skills" array is required')
