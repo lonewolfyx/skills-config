@@ -19,6 +19,9 @@ const config = antfu({
             'yaml/indent': ['error', 2],
         },
     },
+    ignores: [
+        'vendor/**/*',
+    ],
 }) as Linter.Config
 
 export default config
