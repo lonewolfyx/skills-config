@@ -10,15 +10,6 @@ export interface SkillEntry {
     skills?: string[]
 }
 
-export type SkillsConfig = {
-    skills: SkillEntry[]
-    /**
-     * Target agents to install to (defaults to all detected agents)
-     * @default all detected agents
-     */
-    agents?: AgentType | AgentType[]
-} & CommandArgs
-
 export interface UserConfig {
     skills: SkillEntry[]
     /**
@@ -27,6 +18,8 @@ export interface UserConfig {
      */
     agents?: AgentType | AgentType[]
 }
+
+export type SkillsConfig = UserConfig & CommandArgs
 
 export interface ResolvedSkill {
     name: string
