@@ -21,6 +21,11 @@ export type SkillsConfig = {
 
 export interface UserConfig {
     skills: SkillEntry[]
+    /**
+     * Target agents to install to (defaults to all detected agents)
+     * @default all detected agents
+     */
+    agents?: AgentType | AgentType[]
 }
 
 export interface ResolvedSkill {
