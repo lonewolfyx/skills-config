@@ -1,4 +1,4 @@
-import type { SkillsConfig, UserConfig } from './types'
+import type { OptionsConfig, UserConfig } from './types'
 import type { CommandArgs } from '@/args.ts'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -8,7 +8,7 @@ export function defineConfig(config: UserConfig): UserConfig {
     return config
 }
 
-export async function loadConfig(args: CommandArgs): Promise<SkillsConfig> {
+export async function loadConfig(args: CommandArgs): Promise<OptionsConfig> {
     const configPath = resolve(process.cwd(), 'skills.config.ts')
 
     if (!existsSync(configPath)) {
