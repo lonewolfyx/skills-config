@@ -18,7 +18,7 @@ export async function loadConfig(args: CommandArgs): Promise<OptionsConfig> {
     const { createJiti } = await import('jiti')
     const config = await createJiti(configPath, { interopDefault: true })
         .import('./skills.config.ts')
-        .then(m => (m as any).default)
+        .then(m => (m as any).default) as UserConfig
 
     if (!config || !Array.isArray(config.skills)) {
         throw new Error('Invalid config: "skills" array is required')
@@ -28,7 +28,11 @@ export async function loadConfig(args: CommandArgs): Promise<OptionsConfig> {
         ...args,
         ...{
             ...config,
-            agents: config.agents || await getDetectedAgents(),
+            agents: config.agents === undefined
+                ? await getDetectedAgents()
+                : Array.isArray(config.agents)
+                    ? config.agents
+                    : [config.agents],
         },
-    }
+    } as OptionsConfig
 }
