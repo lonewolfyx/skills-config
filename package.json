@@ -23,6 +23,7 @@
         "prepare": "git submodule update --init --recursive && simple-git-hooks"
     },
     "dependencies": {
+        "@clack/prompts": "^1.4.0",
         "citty": "^0.2.2",
         "giget": "^3.2.0",
         "glob": "^13.0.6",
