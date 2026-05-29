@@ -1,9 +1,7 @@
-import type { AgentType } from '../vendor/skills/src/types.ts'
-import process from 'node:process'
-import { isCancel, multiselect, outro, spinner } from '@clack/prompts'
+import { spinner } from '@clack/prompts'
 import { createMain, defineCommand } from 'citty'
 import pc from 'picocolors'
-import { agents, getAllAgentTypes } from '@/agents.ts'
+import { targetAgents } from '@/agents.ts'
 import { commonArgs } from '@/args.ts'
 import { loadConfig } from '@/config.ts'
 import { downloadRepoSkills, resolveRepoSkills } from '@/repos.ts'
@@ -31,26 +29,7 @@ const main = defineCommand({
 
         s.stop(`Scanned ${pc.yellow(config.skills.length)} package${config.skills.length !== 1 ? 's' : ''}, ${config.skill.length >= 1 ? `found ${pc.blue(config.skill.length)} skill${config.skill.length > 1 ? 's' : ''}` : 'no skills found'}`)
 
-        const agentOptions = config.agents.length > 0 ? config.agents : getAllAgentTypes()
-
-        const selected = await multiselect<string>({
-            message: config.agents.length > 0
-                ? 'Select agents to install to:'
-                : 'No agents detected. Select agents to install to:',
-            options: agentOptions.map(agent => ({
-                value: agent,
-                label: agents[agent].displayName,
-            })),
-            required: true,
-            initialValues: config.agents.length > 0 ? config.agents : undefined,
-        }) as AgentType[]
-
-        if (isCancel(selected)) {
-            outro(pc.red('Operation cancelled'))
-            process.exit(0)
-        }
-
-        config.agents = selected
+        await targetAgents(config)
 
         await createSymlinkSkills(config)
     },
