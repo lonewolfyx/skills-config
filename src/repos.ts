@@ -4,7 +4,7 @@ import { downloadTemplate } from 'giget'
 import { glob } from 'glob'
 import { log } from '@/logger.ts'
 
-export const SKILLS_CACHE_FILES = '.skills-cache'
+export const SKILLS_CACHE_FILES = 'node_modules/.skills-cache'
 
 export async function downloadRepoSkills(config: OptionsConfig): Promise<void> {
     for (const entry of config.skills) {
