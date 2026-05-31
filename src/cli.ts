@@ -6,12 +6,13 @@ import { commonArgs } from '@/args.ts'
 import { loadConfig } from '@/config.ts'
 import { downloadRepoSkills, resolveRepoSkills } from '@/repos.ts'
 import { createSymlinkSkills } from '@/symlink.ts'
+import { description, name, version } from '../package.json' with { type: 'json' }
 
 const main = defineCommand({
     meta: {
-        name: 'skills-config',
-        version: '0.0.0',
-        description: 'Manage AI agent skills from git repos',
+        name,
+        version,
+        description,
     },
     args: commonArgs,
     async run({ args }) {
