@@ -1,4 +1,5 @@
-import { intro, outro, spinner } from '@clack/prompts'
+import process from 'node:process'
+import { intro, log, outro, spinner } from '@clack/prompts'
 import { createMain, defineCommand } from 'citty'
 import pc from 'picocolors'
 import { targetAgents } from '@/agents.ts'
@@ -22,19 +23,25 @@ const main = defineCommand({
     },
     args: commonArgs,
     async run({ args }) {
-        const config = await loadConfig(args)
+        try {
+            const config = await loadConfig(args)
 
-        const s = spinner()
-        s.start('Scan the skills module in the Skills configuration repository....')
-        await downloadRepoSkills(config)
+            const s = spinner()
+            s.start('Scan the skills module in the Skills configuration repository....')
+            await downloadRepoSkills(config)
 
-        config.skill = await resolveRepoSkills(config)
+            config.skill = await resolveRepoSkills(config)
 
-        s.stop(`Scanned ${pc.yellow(config.skills.length)} package${config.skills.length !== 1 ? 's' : ''}, ${config.skill.length >= 1 ? `found ${pc.blue(config.skill.length)} skill${config.skill.length > 1 ? 's' : ''}` : 'no skills found'}`)
+            s.stop(`Scanned ${pc.yellow(config.skills.length)} package${config.skills.length !== 1 ? 's' : ''}, ${config.skill.length >= 1 ? `found ${pc.blue(config.skill.length)} skill${config.skill.length > 1 ? 's' : ''}` : 'no skills found'}`)
 
-        await targetAgents(config)
+            await targetAgents(config)
 
-        await createSymlinkSkills(config)
+            await createSymlinkSkills(config)
+        }
+        catch (error) {
+            log.error((error as any).message)
+            process.exit(1)
+        }
     },
 })
 
