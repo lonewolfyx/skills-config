@@ -1,4 +1,4 @@
-import { spinner } from '@clack/prompts'
+import { intro, spinner } from '@clack/prompts'
 import { createMain, defineCommand } from 'citty'
 import pc from 'picocolors'
 import { targetAgents } from '@/agents.ts'
@@ -13,6 +13,9 @@ const main = defineCommand({
         name,
         version,
         description,
+    },
+    setup() {
+        intro(`${pc.bgBlue(` ${name} · v${version} `)}`)
     },
     args: commonArgs,
     async run({ args }) {
