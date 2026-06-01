@@ -19,7 +19,6 @@ export function getAllAgentTypes(): AgentType[] {
 export async function targetAgents(config: OptionsConfig): Promise<void> {
     const agentOptions = config.agents.length > 0 ? config.agents : getAllAgentTypes()
 
-    console.log(isTTY)
     let selected: AgentType[] = agentOptions
     if (isTTY) {
         selected = await multiselect<string>({
