@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "packageManager": "pnpm@10.33.2",
     "description": "Declarative Git skills manager for AI coding agents. Define skills in skills.config.ts and automatically provision them during npm install / prepare.",
-    "author": "",
+    "author": "lonewolfyx",
     "license": "MIT",
     "homepage": "https://github.com/lonewolfyx/skills-config",
     "bugs": {
