@@ -15,6 +15,15 @@
         "skills-config",
         "github-skills"
     ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.mts",
+            "import": "./dist/index.mjs"
+        }
+    },
+    "main": "./dist/index.mjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.mts",
     "bin": {
         "skills-config": "./bin/skills-config.mjs"
     },
