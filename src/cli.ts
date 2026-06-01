@@ -22,10 +22,6 @@ const main = defineCommand({
     },
     args: commonArgs,
     async run({ args }) {
-        // const argv = process.argv.slice(2)
-        // if (argv.length === 0) {
-        //     await sync(args)
-        // }
         const config = await loadConfig(args)
 
         const s = spinner()
