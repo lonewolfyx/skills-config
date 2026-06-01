@@ -6,7 +6,11 @@
     "description": "Declarative Git skills manager for AI coding agents. Define skills in skills.config.ts and automatically provision them during npm install / prepare.",
     "author": "",
     "license": "MIT",
-    "keywords": [],
+    "keywords": [
+        "skills",
+        "skills-config",
+        "github-skills"
+    ],
     "bin": {
         "skills-config": "./bin/skills-config.mjs"
     },
